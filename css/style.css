@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: whitesmoke;
 }
 
 
@@ -20,13 +21,21 @@ body {
     background-color: #649841;
 }
 
-.div-header{
+.div-r-header{
     width: 50%;
     height: 100%;
     
     display: flex;
     align-items: center;
 }
+.div-l-header{
+    width: 50%;
+    height: 100%;
+    justify-content: centre;
+    display: flex;
+    align-items: center;
+}
+
 
 .ul-header{
     display: flex;
@@ -36,7 +45,7 @@ body {
     
 }
 .li-item{
-    margin-right: 5px;
+    margin-right: 15px;
 }
 
 .link-item{
@@ -44,4 +53,24 @@ body {
     font-size: 1.5em;;
     color: white;
     
+}
+.div-img{
+    
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img{
+    width: 80%;
+    height: auto;
+}
+
+/*seccion main*/
+
+.main{
+    width: 100%;
+    height: 100vh;
+    background-color: goldenrod;
 }
