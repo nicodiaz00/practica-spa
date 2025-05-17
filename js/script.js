@@ -1,7 +1,8 @@
 const root= document.getElementById("root");
 root.classList.add("root");
 
-const imgCarousel = ["images/imagen01.JPG","images/imagen02.JPG","images/imagen03.JPG"]
+
+
 
 header()
 main()
@@ -13,7 +14,7 @@ function header(){
 
     const divRight = document.createElement("div");
     const nav = document.createElement("nav");
-    const unorderedList = document.createElement("ul");
+    const unorderedList = createUl();
     const divImg = document.createElement("div");
     
     const img = document.createElement("img");
@@ -24,50 +25,29 @@ function header(){
     divLeft.classList.add("div-r-header")
     divCenter.classList.add("div-c-header")
     divRight.classList.add("div-l-header")
-    unorderedList.classList.add("ul-header");
     divImg.classList.add("div-img")
-
     divImg.appendChild(img);
 
-    const aElement= createlink("Inicio","#inicio");
-    const aElement2 = createlink("Nosotros","#nosotros");
-    const aElement3 = createlink("Servicios","#servicios");
-    const aElement4 = createlink("Contacto","#contacto");
+    const btns =["Nosotros","Servicios","Trabajos","Contacto"];
 
-    aElement.classList.add("link-item")
-    aElement2.classList.add("link-item")
-    aElement3.classList.add("link-item")
-    aElement4.classList.add("link-item")
-    
-    const liElement = createListItem(aElement);
-    const liElement2 = createListItem(aElement2);
-    const liElement3 = createListItem(aElement3);
-    const liElement4 = createListItem(aElement4);
-    
-    liElement.classList.add("li-item")
-    liElement2.classList.add("li-item")
-    liElement3.classList.add("li-item")
-    liElement4.classList.add("li-item")
+    nav.appendChild(createButton("Nosotros", () => console.log("Hola")));
+    nav.appendChild(createButton("Servicios", () => console.log("como")));
+    nav.appendChild(createButton("Trabajos", () => console.log("estas")));
+    nav.appendChild(createButton("Contacto", () => console.log("chau")));
 
-
-    unorderedList.appendChild(liElement)
-    unorderedList.appendChild(liElement2)
-    unorderedList.appendChild(liElement3)
-    unorderedList.appendChild(liElement4)
-
-    nav.appendChild(unorderedList);
-    
     header.appendChild(divLeft);
     header.appendChild(divCenter);
     header.appendChild(divRight);
     
-    divRight.appendChild(nav);
+    divCenter.appendChild(nav);
     divLeft.appendChild(divImg)
-    
+    divRight.appendChild(unorderedList);
     root.appendChild(header);           
 }
 
 function main(){
+    const imgCarousel = ["images/imagen01.JPG","images/imagen02.JPG","images/imagen03.JPG"]
+    
     const divMain = document.createElement("div");
     divMain.classList.add("main");
     divMain.id="inicio";
@@ -76,10 +56,15 @@ function main(){
     const divTop = document.createElement("div");
     divTop.classList.add("divTop");
     
-    const titulo = document.createElement("h1");
-    titulo.textContent ="OAK BORDADOS";
+   const carousel = createCarousel(imgCarousel);
+    divTop.appendChild(carousel);
 
-    divTop.appendChild(titulo)
+    //const titulo = document.createElement("h1");
+    //titulo.textContent ="OAK BORDADOS";
+
+    //divTop.appendChild(titulo)
+
+
 
     divMain.appendChild(divTop)
     
@@ -168,7 +153,7 @@ function createCarousel(imagenes){
     carousel.appendChild(aNext);
 
     let currentSlide = 0;
-    const slides = document.querySelectorAll(".slide");
+    const slides = carousel.querySelectorAll(".slide");
     showSlide(currentSlide,slides);
 
     aPrev.addEventListener("click", () => {
@@ -196,12 +181,83 @@ function showSlide(index,slides){
     });
 }
 
-function createButton(btnText,){
+function createButton(btnText, onClick){
     const btn = document.createElement("button");
     btn.classList.add("btnNav");
     btn.textContent= btnText;
     
     btn.addEventListener("click", onClick);
     return btn;
+
+}
+
+const imgSocialMedia= [
+    {   nombre: "Instagram",
+        imagen:"images/ig.svg",
+        url:"https://www.instagram.com/oak_bordados/"
+    },
+     {   nombre: "Youtube",
+        imagen:"images/youtube.svg",
+        url:"https://www.youtube.com/@oakbordados"
+    },
+     {   nombre: "Tik Tok",
+        imagen:"images/tiktok.svg",
+        url:"https://www.tiktok.com/@oakbordados"
+    },
+    
+
+]
+
+function createUl(){
+
+    const ul = document.createElement("ul");
+    ul.classList.add("ul-header")
+
+    const socialMedia= 
+    [
+        {   
+            Nombre: "Instagram",
+            Imagen:"images/ig.svg",
+            Url:"https://www.instagram.com/oak_bordados/"
+        },
+        {   
+            Nombre: "Youtube",
+            Imagen:"images/youtube.svg",
+            Url:"https://www.youtube.com/@oakbordados"
+        },
+        {   
+            Nombre: "Tik Tok",
+            Imagen:"images/tiktok.svg",
+            Url:"https://www.tiktok.com/@oakbordados"
+        },
+    
+    ]
+
+    
+    
+
+    for(let i=0; i< socialMedia.length;i++){
+        const li= document.createElement("li");
+        const a = document.createElement("a");
+        const img= document.createElement("img");
+        img.classList.add("link-img")
+        
+        li.classList.add("li-item");
+        
+        img.src=socialMedia[i].Imagen;
+        img.alt = socialMedia[i].Nombre
+
+        a.classList.add("link-item")
+        a.href=socialMedia[i].Url;
+        a.target = "_blank";
+        
+        a.appendChild(img);
+        li.appendChild(a);
+        ul.appendChild(li)
+        
+
+    }
+
+    return ul;
 
 }
