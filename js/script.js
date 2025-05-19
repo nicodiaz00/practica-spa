@@ -5,6 +5,7 @@ headerContent.classList.add("headerContent");
 const mainContent = document.getElementById("mainContent");
 mainContent.classList.add("mainContent")
 
+let currentSection = "";
 
 
 
@@ -24,7 +25,7 @@ function header(){
     
     const img = document.createElement("img");
     img.src="images/oak-logo.png"
-    img.classList.add("img");
+    img.classList.add("img-logo");
 
     header.classList.add("header");
     divLeft.classList.add("div-r-header")
@@ -36,7 +37,7 @@ function header(){
     const btns =["Nosotros","Servicios","Trabajos","Contacto"];
 
     nav.appendChild(createButton("Nosotros", () => loadAbout()));
-    nav.appendChild(createButton("Servicios", () => console.log("como")));
+    nav.appendChild(createButton("Servicios", () => loadServiceSection()));
     nav.appendChild(createButton("Trabajos", () => console.log("estas")));
     nav.appendChild(createButton("Contacto", () => console.log("chau")));
 
@@ -52,7 +53,7 @@ function header(){
 }
 
 function main(){
-    const imgCarousel = ["images/imagen01.JPG","images/imagen02.JPG","images/imagen03.JPG"]
+    const imgCarousel = ["images/imagen01.png","images/imagen02.png","images/imagen03.png"]
     
     const divMain = document.createElement("div");
     divMain.classList.add("main");
@@ -103,7 +104,7 @@ function main(){
 
     
     divMain.appendChild(divBottom)
-    
+    currentSection = "main";
     return divMain;
     
 }
@@ -263,7 +264,7 @@ function createUl(){
 
 function createAbout(){
 
-    const imgs = ["images/imagen04.JPG","images/imagen05.JPG","images/imagen06.JPG"];
+    const imgs = ["images/imagen04.png","images/imagen05.png","images/imagen06.png"];
 
     const aboutMain = document.createElement("div");
     aboutMain.classList.add("aboutMain");
@@ -288,46 +289,119 @@ function createAbout(){
     const paragraph = document.createElement("p");
     
     
-    paragraph.textContent = `En Oak Bordados comenzamos nuestro camino en 2019 en Caleta Olivia, Santa Cruz, 
-    con el objetivo de brindar soluciones textiles a empresas y emprendedores que deseen fortalecer su identidad visual.`;
+    paragraph.textContent = `Oak Bordados es un taller textil ubicado en Caleta Olivia, Santa Cruz, especializado en ofrecer soluciones textiles a empresas y emprendedores que buscan potenciar su identidad visual a través de uniformes personalizados y funcionales.
+        Combinamos diseño, calidad y compromiso para ayudar a cada cliente a destacar en su rubro.`;
     
     const paragraphTwo = document.createElement("p");
     
-    paragraphTwo.textContent=`Nos especializamos en la confección de uniformes para distintos sectores industriales 
-    y en el servicio de bordado personalizado en prendas y accesorios como gorras y mochilas. 
-    En Oak, unimos calidad, diseño y compromiso para potenciar tu marca.`;
+    paragraphTwo.textContent=`Nos destacamos por nuestra flexibilidad, no tenemos pedidos mínimos. 
+        Esto nos permite adaptarnos a las necesidades de cada cliente, ya sea para encargos individuales o producciones a gran escala, brindando siempre la misma dedicación y calidad.`;
+
+    const paragraphThree = document.createElement("p");
+    paragraphThree.textContent =`Contamos con maquinaria de última tecnología que nos permite confeccionar prendas y accesorios únicos, cuidando cada detalle. 
+        Nuestro enfoque está en crear piezas exclusivas que reflejen el estilo y la personalidad de cada marca o proyecto`
+    
+        const paragraphFour = document.createElement("p");
+    paragraphFour.textContent = `En nuestra sección de bordado trabajamos con hilos de alta calidad, lo que garantiza un acabado duradero y profesional. 
+        Realizamos bordados de hasta 30x30 cm en hasta 12 colores, y contamos con matricería propia para una mayor precisión y rapidez en cada diseño.`    
+
+    const paragraphFive = document.createElement("p");
+    
+    paragraphFive.textContent = `Descubrí cómo un bordado bien hecho puede transformar la imagen de tu negocio. Potenciá tu marca con identidad, calidad y estilo. ¡En Oak Bordados estamos para ayudarte a dar ese gran paso!`
 
     divparagraph.appendChild(paragraph);
     divparagraph.appendChild(paragraphTwo);
+    divparagraph.appendChild(paragraphThree);
+    divparagraph.appendChild(paragraphFour);
+    divparagraph.appendChild(paragraphFive);
     aboutLeft.appendChild(divH2);
     aboutLeft.appendChild(divparagraph);
     
-    for (let i=0;i < imgs.length; i++){
-        const divImg = document.createElement("div");
-        divImg.classList.add("divImg");
-
-        const image = document.createElement("img");
-        image.classList.add("imgAbout");
-        image.src = imgs[i];
-        divImg.appendChild(image);
-        aboutRight.appendChild(divImg)
-
-
-    }
+    aboutRight.appendChild(createImgSlider(imgs,3000))
 
     aboutMain.appendChild(aboutLeft);
     aboutMain.appendChild(aboutRight);
-
+    currentSection = "about";
     return aboutMain;
     
 }
 
 function loadAbout(){
-    const main = document.getElementById("mainContent");
-    const mainDiv = main.querySelector(".main");
 
-    if (mainDiv) {
-        main.removeChild(mainDiv);
+    if(currentSection === "about"){
+        return
+    }else{
+        const main = document.getElementById("mainContent");
+        const mainDiv = main.querySelector(".main");
+
+        if (mainDiv) {
+            main.removeChild(mainDiv);
+        }
+        main.appendChild(createAbout());
     }
-    main.appendChild(createAbout());
+    
+}
+
+function createImgSlider(images,interval){
+    const sliderDiv =document.createElement("div");
+    sliderDiv.classList.add("div-slider");
+
+    const image = document.createElement("img");
+    image.classList.add("img-slide");
+    image.src = images[0];
+    sliderDiv.appendChild(image);
+
+    let index = 0;
+    setInterval(()=> {
+        index = (index +1)% images.length;
+        image.src = images[index];
+    },interval)
+
+    return sliderDiv;
+
+}
+
+function createServiceSection(){
+    const serviceSection = document.createElement("div");
+    serviceSection.classList.add("service-section");
+
+    const serviceDiv = document.createElement("div")
+    const img = document.createElement("img");
+    img.src="images/imagen08.png";
+    serviceDiv.appendChild(img);
+
+    
+
+    const serviceDiv2 = document.createElement("div")
+    
+    const img2 = document.createElement("img");
+    img2.src="images/imagen09.png";
+    
+    serviceDiv2.appendChild(img2)
+    const serviceDiv3 = document.createElement("div")
+
+    serviceSection.appendChild(serviceDiv);
+    serviceSection.appendChild(serviceDiv2);
+    serviceSection.appendChild(serviceDiv3);
+    currentSection ="service";
+    return serviceSection;
+
+
+
+
+
+}
+
+function loadServiceSection(){
+    if(currentSection === "service"){
+        return;
+    }else{
+        const main = document.getElementById("mainContent");
+        const mainDiv =main.querySelector(".main");
+        if(mainDiv){
+            main.removeChild(mainDiv)
+    }
+        main.appendChild(createServiceSection())
+    }
+   
 }
