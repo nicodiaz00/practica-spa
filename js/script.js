@@ -1,11 +1,16 @@
 const root= document.getElementById("root");
 root.classList.add("root");
+const headerContent = document.getElementById("headerContent");
+headerContent.classList.add("headerContent");
+const mainContent = document.getElementById("mainContent");
+mainContent.classList.add("mainContent")
 
 
 
 
-header()
-main()
+
+headerContent.appendChild(header()); 
+mainContent.appendChild(main()); 
 
 function header(){
     const header = document.createElement("header");
@@ -30,7 +35,7 @@ function header(){
 
     const btns =["Nosotros","Servicios","Trabajos","Contacto"];
 
-    nav.appendChild(createButton("Nosotros", () => console.log("Hola")));
+    nav.appendChild(createButton("Nosotros", () => loadAbout()));
     nav.appendChild(createButton("Servicios", () => console.log("como")));
     nav.appendChild(createButton("Trabajos", () => console.log("estas")));
     nav.appendChild(createButton("Contacto", () => console.log("chau")));
@@ -42,7 +47,8 @@ function header(){
     divCenter.appendChild(nav);
     divLeft.appendChild(divImg)
     divRight.appendChild(unorderedList);
-    root.appendChild(header);           
+    
+    return header;
 }
 
 function main(){
@@ -59,11 +65,7 @@ function main(){
    const carousel = createCarousel(imgCarousel);
     divTop.appendChild(carousel);
 
-    //const titulo = document.createElement("h1");
-    //titulo.textContent ="OAK BORDADOS";
-
-    //divTop.appendChild(titulo)
-
+    
 
 
     divMain.appendChild(divTop)
@@ -101,7 +103,8 @@ function main(){
 
     
     divMain.appendChild(divBottom)
-    root.appendChild(divMain)
+    
+    return divMain;
     
 }
 
@@ -138,8 +141,8 @@ function createCarousel(imagenes){
     const aPrev = document.createElement("a");
     const aNext = document.createElement("a");
     
-    aPrev.textContent = "\u276E"; // equivalente a &#10094;
-    aNext.textContent = "\u276F"; // equivalente a &#10095;
+    aPrev.textContent = "\u276E"; 
+    aNext.textContent = "\u276F"; 
 
     aPrev.classList.add("prev");
     aNext.classList.add("next");
@@ -232,10 +235,6 @@ function createUl(){
         },
     
     ]
-
-    
-    
-
     for(let i=0; i< socialMedia.length;i++){
         const li= document.createElement("li");
         const a = document.createElement("a");
@@ -260,4 +259,75 @@ function createUl(){
 
     return ul;
 
+}
+
+function createAbout(){
+
+    const imgs = ["images/imagen04.JPG","images/imagen05.JPG","images/imagen06.JPG"];
+
+    const aboutMain = document.createElement("div");
+    aboutMain.classList.add("aboutMain");
+    const aboutLeft = document.createElement("div");
+    aboutLeft.classList.add("aboutLeft");
+
+    const aboutRight = document.createElement("div");
+    aboutRight.classList.add("aboutRight");
+
+    const divH2 = document.createElement("h2");
+    divH2.classList.add("div-h2")
+
+    const divparagraph= document.createElement("div");
+    divparagraph.classList.add("div-paragraph");
+
+
+    const h2 = document.createElement("h2");
+    h2.textContent ="Nuestro taller";
+
+    divH2.appendChild(h2);
+
+    const paragraph = document.createElement("p");
+    
+    
+    paragraph.textContent = `En Oak Bordados comenzamos nuestro camino en 2019 en Caleta Olivia, Santa Cruz, 
+    con el objetivo de brindar soluciones textiles a empresas y emprendedores que deseen fortalecer su identidad visual.`;
+    
+    const paragraphTwo = document.createElement("p");
+    
+    paragraphTwo.textContent=`Nos especializamos en la confección de uniformes para distintos sectores industriales 
+    y en el servicio de bordado personalizado en prendas y accesorios como gorras y mochilas. 
+    En Oak, unimos calidad, diseño y compromiso para potenciar tu marca.`;
+
+    divparagraph.appendChild(paragraph);
+    divparagraph.appendChild(paragraphTwo);
+    aboutLeft.appendChild(divH2);
+    aboutLeft.appendChild(divparagraph);
+    
+    for (let i=0;i < imgs.length; i++){
+        const divImg = document.createElement("div");
+        divImg.classList.add("divImg");
+
+        const image = document.createElement("img");
+        image.classList.add("imgAbout");
+        image.src = imgs[i];
+        divImg.appendChild(image);
+        aboutRight.appendChild(divImg)
+
+
+    }
+
+    aboutMain.appendChild(aboutLeft);
+    aboutMain.appendChild(aboutRight);
+
+    return aboutMain;
+    
+}
+
+function loadAbout(){
+    const main = document.getElementById("mainContent");
+    const mainDiv = main.querySelector(".main");
+
+    if (mainDiv) {
+        main.removeChild(mainDiv);
+    }
+    main.appendChild(createAbout());
 }
