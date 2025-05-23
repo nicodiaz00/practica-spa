@@ -94,21 +94,38 @@ nav{
     
     
 }
+.a-home{
+    cursor: pointer;
+}
+.ig-style{
+    width: 34px;
+    height: auto;
+}
+.fb-style{
+    width: 30px;
+    height: auto;
+}
+.tiktok-style{
+    width: 40px;
+    height: auto;
+}
+
 
 .link-img{
-    width: 40px;
-    height: 20px;
+    width: 25px;
+    height: auto;
 }
 .div-img{
     
-    width: 20%;
+    width: 40%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .img-logo{
-    width: 80%;
+    width: 60%;
     height: auto;
 }
 
@@ -120,13 +137,16 @@ nav{
     
     display: flex;
     flex-direction: column;
+    
 }
 
 .divTop{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 66%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
     
     
     
@@ -163,24 +183,9 @@ nav{
 .img-bottom{
    width: 100%;
   height: 100%;
-  object-fit: cover;       /* Esta es la clave */
   display: block;
 }
-/*
-.carousel{
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-.img-carousel{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.slide{
-    display: none;
-}
-*/
+
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -190,7 +195,7 @@ nav{
   padding: 16px;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 3em;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
@@ -201,7 +206,7 @@ nav{
   border-radius: 3px 0 0 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
+
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
@@ -209,32 +214,33 @@ nav{
 .btnNav{
     width: 15%;
     height: 45%;
-    box-shadow: 0 1px 7px #18632f; /* Sombra con el color que querés */
+    box-shadow: 0 1px 7px #18632f; 
     background-color: #649841;
     border: none;
     color: white;
     
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Animación suave */
+    transition: background-color 0.3s, transform 0.3s; 
 
 }
 .btnNav:hover {
    background-color: #18632f;
-  transform: scale(1.1); /* Agranda el botón un 10% */
+  transform: scale(1.1); 
 }
-
 
 /*stilo carrusel*/
 .carousel{
     width: 100%;
     height: 100%;
     display: flex;
+    
        
 }
 .slide{
     height: 100%;
     width: 100%;
     display: flex;
+    
 }
 
 .img-carousel {
@@ -324,21 +330,402 @@ justify-content: center;
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     
+   
+}
+
+.service-title-div{
+    width: 100%;
+    
+    display: flex;
+    height: 15%;
     align-items: center;
     justify-content: center;
-
 }
-.service-section > div{
+.service-title-div > h2{
+    font-size: 2.4em;
+    font-family: sans-serif;
+}
+
+.service-image-div{
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   justify-content: space-around;
+   height: 85%;
+   
+}
+
+.service-image-div > div{
     width: 25%;
     height: 90%;
     background-color: bisque;
     margin-left: 0.5%;
     margin-right: 0.5%;
+     transition: transform 0.3s ease;
+     position: relative;
     
 }
-.service-section > div > img{
+.service-image-div > div > h3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    
+}
+.service-image-div > div:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+    
+.service-image-div > div > img{
     width: 100%;
     height: 100%;
+}
+
+
+.form-contact{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 75%;
+    width: 40%;
+    border-radius: 10px;
+    justify-content: center;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    
+}
+.form-contact > label{
+    /*margin-left: 3%;*/
+    margin-top: 1%;
+    
+    
+}
+.form-contact > input{
+    width: 90%;
+    height: 7%;  
+    text-align: center;
+    /*margin-left: 3%;*/
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background-color: whitesmoke;
+    border: none;
+    
+}
+input:focus {
+    outline: none;
+    border: 1px solid #649841;
+    box-shadow: 0 0 5px rgba(100, 152, 65, 0.5); 
+}
+
+
+.form-contact > textarea {
+    width: 90%;
+    height: 20%;
+    /*margin-left: 3%;*/
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: whitesmoke;
+    border: none;
+    resize: none;
+}
+textarea:focus{
+    outline: none;
+    border: 1px solid #649841; 
+    box-shadow: 0 0 5px rgba(100, 152, 65, 0.5); 
+}
+
+.contact-main{
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: row;
+}
+.div-tittle{
+    width: 100%;
+    align-items: center;
+    height: 13.4%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.div-tittle > h2 {
+    font-size: 2.5em;
+    margin-left: 2%;
+    margin-top: 1%;
+    
+}
+.div-tittle > h3{
+    font-size: 2em;
+    margin-left: 2%;
+    margin-top: 1%;
+    
+    
+}
+.div-tittle > h4{
+    font-size: 1.5em;
+    margin-left: 2%;
+    margin-top: 2%;
+    
+}
+.div-contact-left{
+    display: flex;
+    height: 100%;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+}
+.div-contact-right{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+   
+    justify-content: center;
+    align-items: center;
+    
+}
+.btnEnviar{
+    
+    width: 30%;
+    margin-left: 3%;
+    border-radius: 1px;
+    height: 5%;
+    border: none;
+    box-shadow: 0 1px 2px #18632f; 
+    background-color: #649841;
+    border: none;
+    color: white; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; 
+    
+}
+.btnEnviar:hover{   
+    background-color: #18632f;
+    transform: scale(1.1)
+}
+
+.upper-div{
+    width: 100%;
+    height: 40%;
+    
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.address-container{
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.bottom-div{
+    width: 100%;
+    height: 50%;       
+}
+
+.address-div{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;  
+}
+.address-tittle{
+    
+    display: flex;
+    height: 50%;
+    flex-direction: column;
+    align-items: center;
+
+}
+.address-tittle > h2{
+    font-size: 2.5em;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+.div-gps{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5%;
+    height: 20%;
+    width: 50%;
+    align-items: center;
+    border-radius: 10px;
+    
+    
+}
+.div-gps > img{
+    width: 10%;
+    height: auto;
+}
+.div-gps > p{
+    margin-left: 1%;
+    font-size: 1.2em;
+    
+}
+.div-phone{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5%;
+    height: 20%;
+    width: 50%;
+    align-items: center;
+    border-radius: 10px;
+    
+    
+    
+}
+.div-phone > img{
+    width: 8%;
+    height: auto;
+    margin-left: 1%;
+}
+.div-phone > p{
+    margin-left: 2%;
+    font-size: 1.2em;
+}
+.div-email{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5%;
+    height: 20%;
+    width: 50%;
+    align-items: center;
+    border-radius: 10px;
+    
+
+}
+.div-email > img{
+    width: 8%;
+    height: auto;
+    margin-left: 1%;
+}
+.div-email > p{
+    margin-left: 2%;
+    font-size: 1.2em;
+}
+
+.div-map{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.map-container{
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+
+@media (max-width: 800px) {
+
+    
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: whitesmoke;
+}
+   
+.root{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+}
+.headerContent{
+    display: flex;
+    height: 10%;
+    width: 100%;
+}
+.mainContent{
+    height: 90%;
+    width: 100%;
+}
+.div-r-header{
+    display: flex;
+    width: 20%;
+    
+    
+}
+.div-img{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div-img > a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-logo{
+    width: 80%;
+    
+}
+.div-c-header{
+    width: 80%
+}
+.div-c-header > nav{
+    display: flex;
+    justify-content: unset
+
+}
+.btnNav{
+   margin-left: 5%;
+   margin-right: 2%;
+   font-size: 0.7em;
+   width: 20%;
+}
+.div-l-header{
+    display: none;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.divTop{
+    
+    width: 100%;
+    height: 100%;
+}
+.carousel{
+    height: 100%;
+    
+    align-items: center;
+}
+.slide{
+    height: 100%;
+}
+
+
 }
